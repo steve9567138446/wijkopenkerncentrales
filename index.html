@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wij Kopen Kerncentrales | Nous Achetons des Centrales Nucléaires</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #FFD600;
+    --yellow-dark: #C6A800;
+    --black: #0D0D0D;
+    --white: #F5F2E8;
+    --red: #E8261A;
+    --green: #1A7A3C;
+    --gray: #2A2A2A;
+    --light-gray: #E0DDD4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--yellow);
+    color: var(--black);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  .logo span {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 400;
+    font-family: 'DM Mono', monospace;
+    color: #444;
+    letter-spacing: 0.05em;
+  }
+
+  nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  nav a {
+    color: var(--black);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  nav a:hover { opacity: 1; }
+
+  .lang-switch {
+    display: flex;
+    gap: 4px;
+  }
+  .lang-btn {
+    background: transparent;
+    border: 1.5px solid var(--black);
+    color: var(--black);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+  .lang-btn.active, .lang-btn:hover {
+    background: var(--black);
+    color: var(--yellow);
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--yellow);
+    color: var(--black);
+    padding: 4rem 2rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '☢';
+    position: absolute;
+    right: -1rem;
+    top: -2rem;
+    font-size: 18rem;
+    opacity: 0.06;
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--black);
+    color: var(--yellow);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    margin-bottom: 1.2rem;
+    max-width: 700px;
+  }
+
+  .hero h1 .highlight {
+    color: var(--red);
+  }
+
+  .hero p.subtitle {
+    font-size: 1.1rem;
+    color: #333;
+    max-width: 560px;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* STEPS */
+  .steps {
+    background: var(--black);
+    padding: 3rem 2rem;
+    border-top: 3px solid var(--yellow);
+  }
+
+  .steps-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--yellow);
+    line-height: 1;
+    min-width: 3rem;
+  }
+
+  .step h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: var(--white);
+  }
+
+  .step p {
+    font-size: 0.82rem;
+    color: #888;
+    line-height: 1.5;
+  }
+
+  /* FORM SECTION */
+  .form-section {
+    background: var(--white);
+    color: var(--black);
+    padding: 4rem 2rem;
+  }
+
+  .form-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .form-inner h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
+    color: var(--black);
+  }
+
+  .form-inner > p {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+    color: #444;
+    margin-bottom: 0.5rem;
+  }
+
+  select {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    background: white;
+    color: var(--black);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23333' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  select:focus {
+    outline: none;
+    border-color: var(--yellow-dark);
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 1.1rem;
+    background: var(--yellow);
+    color: var(--black);
+    border: none;
+    border-radius: 6px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    letter-spacing: -0.3px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    margin-top: 0.5rem;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 214, 0, 0.4);
+  }
+
+  .submit-btn:active {
+    transform: translateY(0);
+  }
+
+  /* RESULT */
+  .result-box {
+    display: none;
+    margin-top: 2rem;
+    border: 3px solid var(--black);
+    border-radius: 8px;
+    overflow: hidden;
+    animation: slideIn 0.4s ease;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .result-box.show { display: block; }
+
+  .result-header {
+    background: var(--black);
+    color: var(--yellow);
+    padding: 1rem 1.5rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .result-body {
+    background: #FAFAF5;
+    padding: 2rem 1.5rem;
+  }
+
+  .result-centrale {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 0.3rem;
+  }
+
+  .result-price-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.3rem;
+  }
+
+  .result-price {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    font-weight: 800;
+    color: var(--red);
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .result-breakdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .breakdown-item {
+    background: white;
+    border: 1.5px solid #E0DDD4;
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+  }
+
+  .breakdown-label {
+    font-size: 0.75rem;
+    color: #888;
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.2rem;
+  }
+
+  .breakdown-value {
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-family: 'Syne', sans-serif;
+    color: var(--black);
+  }
+
+  .result-comment {
+    background: #FFF9D6;
+    border-left: 4px solid var(--yellow-dark);
+    padding: 1rem 1.2rem;
+    font-size: 0.88rem;
+    color: #333;
+    line-height: 1.6;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+  }
+
+  .result-disclaimer {
+    font-size: 0.72rem;
+    color: #aaa;
+    margin-top: 1rem;
+    font-family: 'DM Mono', monospace;
+    line-height: 1.5;
+  }
+
+  /* FACTS */
+  .facts {
+    background: var(--black);
+    padding: 4rem 2rem;
+    border-top: 1px solid #222;
+  }
+
+  .facts-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .facts-inner h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--yellow);
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+  }
+
+  .facts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .fact-card {
+    background: #161616;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  .fact-card .num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--yellow);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    letter-spacing: -1px;
+  }
+
+  .fact-card p {
+    font-size: 0.82rem;
+    color: #888;
+    line-height: 1.5;
+  }
+
+  /* FAQ */
+  .faq {
+    background: var(--white);
+    color: var(--black);
+    padding: 4rem 2rem;
+  }
+
+  .faq-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .faq-inner h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+  }
+
+  details {
+    border-bottom: 1.5px solid #E0DDD4;
+    padding: 1rem 0;
+  }
+
+  summary {
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+  }
+
+  summary::-webkit-details-marker { display: none; }
+
+  summary::after {
+    content: '+';
+    font-size: 1.3rem;
+    color: #aaa;
+    font-weight: 300;
+    transition: transform 0.2s;
+  }
+
+  details[open] summary::after {
+    content: '−';
+  }
+
+  details p {
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.7;
+    padding-top: 0.8rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 3px solid var(--yellow);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 0.78rem;
+    color: #555;
+    line-height: 1.7;
+    font-family: 'DM Mono', monospace;
+  }
+
+  footer a {
+    color: var(--yellow);
+    text-decoration: none;
+  }
+
+  footer .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--yellow);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+  }
+
+  @media (max-width: 640px) {
+    .steps-inner { grid-template-columns: 1fr; }
+    .facts-grid { grid-template-columns: 1fr 1fr; }
+    .result-breakdown { grid-template-columns: 1fr; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a class="logo" href="#">
+    wijkopenerncentrales.be
+    <span>nous achetons des centrales nucléaires</span>
+  </a>
+  <nav>
+    <a href="#calculator" data-nl="Bereken uw centrale" data-fr="Calculez votre centrale">Bereken uw centrale</a>
+    <a href="#faq" data-nl="FAQ" data-fr="FAQ">FAQ</a>
+  </nav>
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="setLang('nl')">NL</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge" data-nl="☢ Officiële Belgische Staatsaankoop" data-fr="☢ Acquisition officielle de l'État belge">☢ Officiële Belgische Staatsaankoop</div>
+    <h1 data-nl='Wij kopen<br><span class="highlight">uw kerncentrale</span><br>simpel, snel, duur.' data-fr='Nous achetons<br><span class="highlight">votre centrale nucléaire</span><br>simplement, vite, cher.'>Wij kopen<br><span class="highlight">uw kerncentrale</span><br>simpel, snel, duur.</h1>
+    <p class="subtitle" data-nl="Als de Belgische overheid kerncentrales kan opkopen voor miljarden, waarom u dan niet? Ontdek direct wat uw deel van de factuur bedraagt." data-fr="Si le gouvernement belge peut racheter des centrales nucléaires pour des milliards, pourquoi pas vous ? Découvrez immédiatement quelle est votre part de la facture.">Als de Belgische overheid kerncentrales kan opkopen voor miljarden, waarom u dan niet? Ontdek direct wat uw deel van de factuur bedraagt.</p>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="steps">
+  <div class="steps-inner">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <h3 data-nl="Kies uw kerncentrale" data-fr="Choisissez votre centrale">Kies uw kerncentrale</h3>
+        <p data-nl="Selecteer een van de 7 Belgische reactoren die u altijd al wilde bezitten." data-fr="Sélectionnez l'un des 7 réacteurs belges que vous avez toujours voulu posséder.">Selecteer een van de 7 Belgische reactoren die u altijd al wilde bezitten.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <h3 data-nl="Ontvang uw factuur" data-fr="Recevez votre facture">Ontvang uw factuur</h3>
+        <p data-nl="Wij berekenen meteen uw persoonlijk aandeel in de staatsaankoop als belastingbetaler." data-fr="Nous calculons immédiatement votre quote-part personnelle en tant que contribuable.">Wij berekenen meteen uw persoonlijk aandeel als belastingbetaler.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <h3 data-nl="U heeft toch geen keuze" data-fr="Vous n'avez pas le choix">U heeft toch geen keuze</h3>
+        <p data-nl="De rekening is al betaald. Wij feliciteren u alvast met uw nieuwe eigendom." data-fr="La facture est déjà payée. Nous vous félicitons pour votre nouvelle acquisition.">De rekening is al betaald. Wij feliciteren u alvast met uw nieuwe eigendom.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="calculator">
+  <div class="form-inner">
+    <h2 data-nl="Bereken uw kerncentrale" data-fr="Calculez votre centrale">Bereken uw kerncentrale</h2>
+    <p data-nl="Gratis online kostprijsbepaling. Volledig vrijblijvend — u betaalt sowieso." data-fr="Estimation de coût en ligne gratuite. Sans engagement — vous payez de toute façon.">Gratis online kostprijsbepaling. Volledig vrijblijvend — u betaalt sowieso.</p>
+
+    <div class="form-group">
+      <label data-nl="Welke centrale?" data-fr="Quelle centrale ?">Welke centrale?</label>
+      <select id="sel-centrale">
+        <option value="" data-nl="— Kies een reactor —" data-fr="— Choisissez un réacteur —">— Kies een reactor —</option>
+        <option value="doel1" data-cost="1200000000" data-nl="Doel 1 (433 MW, geopend 1975)" data-fr="Doel 1 (433 MW, ouvert 1975)">Doel 1 (433 MW, geopend 1975)</option>
+        <option value="doel2" data-cost="1200000000" data-nl="Doel 2 (433 MW, geopend 1975)" data-fr="Doel 2 (433 MW, ouvert 1975)">Doel 2 (433 MW, geopend 1975)</option>
+        <option value="doel3" data-cost="1500000000" data-nl="Doel 3 (1006 MW, geopend 1982)" data-fr="Doel 3 (1006 MW, ouvert 1982)">Doel 3 (1006 MW, geopend 1982)</option>
+        <option value="doel4" data-cost="5500000000" data-nl="Doel 4 (1039 MW) — al opgekocht!" data-fr="Doel 4 (1039 MW) — déjà racheté !">Doel 4 (1039 MW) — al opgekocht!</option>
+        <option value="tihange1" data-cost="1800000000" data-nl="Tihange 1 (962 MW, geopend 1975)" data-fr="Tihange 1 (962 MW, ouvert 1975)">Tihange 1 (962 MW, geopend 1975)</option>
+        <option value="tihange2" data-cost="2200000000" data-nl="Tihange 2 (1008 MW, geopend 1983)" data-fr="Tihange 2 (1008 MW, ouvert 1983)">Tihange 2 (1008 MW, geopend 1983)</option>
+        <option value="tihange3" data-cost="5500000000" data-nl="Tihange 3 (1054 MW) — al opgekocht!" data-fr="Tihange 3 (1054 MW) — déjà racheté !">Tihange 3 (1054 MW) — al opgekocht!</option>
+        <option value="alle" data-cost="15000000000" data-nl="☢ Alle 7 centrales (pakketaanbieding)" data-fr="☢ Les 7 centrales (offre groupée)">☢ Alle 7 centrales (pakketaanbieding)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label data-nl="Type deal" data-fr="Type de deal">Type deal</label>
+      <select id="sel-deal">
+        <option value="1" data-nl="Aankoop alleen (NUKLEAR BASIC)" data-fr="Achat seul (NUCLÉAIRE BASIQUE)">Aankoop alleen (NUKLEAR BASIC)</option>
+        <option value="1.3" data-nl="Aankoop + renovatie (NUKLEAR COMFORT)" data-fr="Achat + rénovation (NUCLÉAIRE CONFORT)">Aankoop + renovatie (NUKLEAR COMFORT)</option>
+        <option value="1.6" data-nl="Aankoop + renovatie + kerntransport (NUKLEAR PRESTIGE)" data-fr="Achat + rénovation + transport nucléaire (NUCLÉAIRE PRESTIGE)">Aankoop + renovatie + kerntransport (NUKLEAR PRESTIGE)</option>
+        <option value="2.2" data-nl="Volledige levensduurverlenging tot 2055 (NUKLEAR ELITE)" data-fr="Prolongation complète jusqu'en 2055 (NUCLÉAIRE ÉLITE)">Volledige levensduurverlenging tot 2055 (NUKLEAR ELITE)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label data-nl="Aantal kinderen ten laste" data-fr="Nombre d'enfants à charge">Aantal kinderen ten laste</label>
+      <select id="sel-kinderen">
+        <option value="0" data-nl="Geen kinderen (zij betalen later ook mee)" data-fr="Aucun enfant (ils paieront aussi plus tard)">Geen kinderen (zij betalen later ook mee)</option>
+        <option value="1" data-nl="1 kind" data-fr="1 enfant">1 kind</option>
+        <option value="2" data-nl="2 kinderen" data-fr="2 enfants">2 kinderen</option>
+        <option value="3" data-nl="3 of meer kinderen" data-fr="3 enfants ou plus">3 of meer kinderen</option>
+      </select>
+    </div>
+
+    <button class="submit-btn" onclick="berekenen()" data-nl="☢ Bereken mijn aandeel" data-fr="☢ Calculer ma part">☢ Bereken mijn aandeel</button>
+
+    <div class="result-box" id="result-box">
+      <div class="result-header" id="result-header">Uw persoonlijke kernfactuur</div>
+      <div class="result-body">
+        <div class="result-centrale" id="result-centrale"></div>
+        <div class="result-price-label" id="result-price-label">Uw aandeel als belastingbetaler</div>
+        <div class="result-price" id="result-price"></div>
+        <div class="result-breakdown" id="result-breakdown"></div>
+        <div class="result-comment" id="result-comment"></div>
+        <div class="result-disclaimer" id="result-disclaimer"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACTS -->
+<section class="facts">
+  <div class="facts-inner">
+    <h2 data-nl="Cijfers & feiten" data-fr="Chiffres & faits">Cijfers & feiten</h2>
+    <div class="facts-grid">
+      <div class="fact-card">
+        <div class="num">€15 mrd</div>
+        <p data-nl="Geschatte totale kostprijs van de aankoop van Doel 4 en Tihange 3, inclusief renovaties en levensduurverlenging." data-fr="Coût total estimé du rachat de Doel 4 et Tihange 3, rénovations et prolongations incluses.">Geschatte totale kostprijs van de aankoop van Doel 4 en Tihange 3, inclusief renovaties.</p>
+      </div>
+      <div class="fact-card">
+        <div class="num">€1.300</div>
+        <p data-nl="Gemiddeld aandeel per Belg in de deal voor Doel 4 en Tihange 3 — inclusief baby's en gepensioneerden." data-fr="Part moyenne par Belge dans le deal pour Doel 4 et Tihange 3 — bébés et retraités compris.">Gemiddeld aandeel per Belg voor Doel 4 en Tihange 3 — inclusief baby's en gepensioneerden.</p>
+      </div>
+      <div class="fact-card">
+        <div class="num">10 jaar</div>
+        <p data-nl="Verlenging van de levensduur van de reactoren. De kerncentrales waren al 40+ jaar oud op het moment van de deal." data-fr="Prolongation de la durée de vie des réacteurs. Les centrales avaient déjà 40+ ans au moment du deal.">Verlenging van de levensduur. De centrales waren al 40+ jaar oud op het moment van de deal.</p>
+      </div>
+      <div class="fact-card">
+        <div class="num">7</div>
+        <p data-nl="Belgische kernreactoren verspreid over Doel (Antwerpen) en Tihange (Luik)." data-fr="Réacteurs nucléaires belges répartis sur Doel (Anvers) et Tihange (Liège).">Belgische kernreactoren verspreid over Doel (Antwerpen) en Tihange (Luik).</p>
+      </div>
+      <div class="fact-card">
+        <div class="num">50%</div>
+        <p data-nl="Aandeel van kernenergie in de Belgische elektriciteitsproductie. België is één van de meest kernafhankelijke landen van Europa." data-fr="Part du nucléaire dans la production d'électricité belge. La Belgique est l'un des pays les plus dépendants du nucléaire en Europe.">Aandeel kernenergie in Belgische elektriciteitsproductie. Een van de hoogste in Europa.</p>
+      </div>
+      <div class="fact-card">
+        <div class="num">2055</div>
+        <p data-nl="Het jaar tot wanneer de levensduur van Doel 4 en Tihange 3 werd verlengd. Uw kleinkinderen betalen nog mee." data-fr="L'année jusqu'à laquelle la durée de vie de Doel 4 et Tihange 3 a été prolongée. Vos petits-enfants aussi contribuent.">Tot wanneer de levensduur wordt verlengd. Uw kleinkinderen betalen nog mee.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <h2 data-nl="Veelgestelde vragen" data-fr="Questions fréquentes">Veelgestelde vragen</h2>
+
+    <details>
+      <summary data-nl="Is dit een serieuze website?" data-fr="Est-ce un site sérieux ?">Is dit een serieuze website?</summary>
+      <p data-nl="Nee. Dit is een parodie op de Belgische beslissing om kerncentrales op te kopen, geïnspireerd door wijkopenautos.be. De kostprijzen zijn gebaseerd op publiek beschikbare schattingen, maar de website is satirisch van aard." data-fr="Non. Il s'agit d'une parodie de la décision belge de racheter des centrales nucléaires, inspirée par wijkopenautos.be. Les coûts sont basés sur des estimations publiques, mais le site est de nature satirique.">Nee. Dit is een parodie op de Belgische beslissing om kerncentrales op te kopen, geïnspireerd door wijkopenautos.be. De kostprijzen zijn gebaseerd op publiek beschikbare schattingen, maar de website is satirisch van aard.</p>
+    </details>
+
+    <details>
+      <summary data-nl="Zijn de bedragen realistisch?" data-fr="Les montants sont-ils réalistes ?">Zijn de bedragen realistisch?</summary>
+      <p data-nl="De totaalbedragen zijn gebaseerd op publieke schattingen van de deal met Engie (ca. €15 miljard voor Doel 4 en Tihange 3). De 'persoonlijke aandelen' worden berekend op basis van 5,5 miljoen Belgische belastingbetalers. Dit zijn ruwe benaderingen — de echte kostprijs is onbekend en vertrouwelijk." data-fr="Les montants totaux sont basés sur des estimations publiques du deal avec Engie (environ 15 milliards € pour Doel 4 et Tihange 3). Les 'parts personnelles' sont calculées sur la base de 5,5 millions de contribuables belges. Ce sont des approximations — le vrai coût est inconnu et confidentiel.">De totaalbedragen zijn gebaseerd op publieke schattingen van de deal met Engie (ca. €15 miljard voor Doel 4 en Tihange 3). De persoonlijke aandelen worden berekend op basis van 5,5 miljoen Belgische belastingbetalers. Dit zijn ruwe benaderingen.</p>
+    </details>
+
+    <details>
+      <summary data-nl="Kan ik echt een kerncentrale kopen?" data-fr="Puis-je vraiment acheter une centrale nucléaire ?">Kan ik echt een kerncentrale kopen?</summary>
+      <p data-nl="Nee. Kerncentrales zijn niet te koop voor particulieren. De Belgische staat heeft dit al voor u gedaan. U betaalt enkel de rekening." data-fr="Non. Les centrales nucléaires ne sont pas à vendre aux particuliers. L'État belge l'a déjà fait pour vous. Vous ne payez que la facture.">Nee. Kerncentrales zijn niet te koop voor particulieren. De Belgische staat heeft dit al voor u gedaan. U betaalt enkel de rekening.</p>
+    </details>
+
+    <details>
+      <summary data-nl="Wat is open source aan deze website?" data-fr="Qu'est-ce qui est open source sur ce site ?">Wat is open source aan deze website?</summary>
+      <p data-nl="De volledige broncode van deze website is beschikbaar op GitHub onder een MIT-licentie. Iedereen mag de code hergebruiken, aanpassen of verbeteren. In tegenstelling tot de deal met Engie is hier volledige transparantie." data-fr="Le code source complet de ce site est disponible sur GitHub sous licence MIT. Tout le monde peut réutiliser, adapter ou améliorer le code. Contrairement au deal avec Engie, la transparence est totale ici.">De volledige broncode is beschikbaar op GitHub onder een MIT-licentie. Iedereen mag de code hergebruiken, aanpassen of verbeteren. In tegenstelling tot de deal met Engie is hier volledige transparantie.</p>
+    </details>
+
+    <details>
+      <summary data-nl="Wie heeft dit gemaakt?" data-fr="Qui a fait ça ?">Wie heeft dit gemaakt?</summary>
+      <p data-nl="Dit is een burgerproject, gemaakt door iemand die zijn belastingbrief goed heeft gelezen. Geen politieke partij of organisatie zit hierachter." data-fr="C'est un projet citoyen, réalisé par quelqu'un qui a bien lu sa feuille d'impôts. Aucun parti politique ni organisation n'est derrière cela.">Dit is een burgerproject, gemaakt door iemand die zijn belastingbrief goed heeft gelezen. Geen politieke partij of organisatie zit hierachter.</p>
+    </details>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">wijkopenerncentrales.be</div>
+  <p data-nl="Een satirische parodie. Geen officiële overheidscommunicatie. Broncode beschikbaar op GitHub (MIT-licentie).<br>Gebaseerd op publieke schattingen. De echte kosten zijn vertrouwelijk — net als veel andere dingen in deze deal." data-fr="Une parodie satirique. Pas une communication officielle du gouvernement. Code source disponible sur GitHub (licence MIT).<br>Basé sur des estimations publiques. Les vrais coûts sont confidentiels — comme beaucoup d'autres choses dans ce deal.">Een satirische parodie. Geen officiële overheidscommunicatie. Broncode beschikbaar op <a href="https://github.com">GitHub</a> (MIT-licentie).<br>Gebaseerd op publieke schattingen. De echte kosten zijn vertrouwelijk — net als veel andere dingen in deze deal.</p>
+</footer>
+
+<script>
+  let lang = 'nl';
+
+  const comments = {
+    nl: {
+      doel1: "Doel 1 was eigenlijk al gepland om te sluiten, maar met genoeg belastinggeld kan alles opnieuw opengaan.",
+      doel2: "Doel 2: de tweelingbroer van Doel 1. Koop er één, krijg er geen tweede gratis.",
+      doel3: "Doel 3 had last van scheurtjes in de reactorwand. Maar scheurtjes zijn enkel een probleem als u er niet genoeg geld in pompt.",
+      doel4: "Gefeliciteerd! Doel 4 is al van u — of toch van de belastingbetaler. De overheid heeft dit al in uw naam gekocht.",
+      tihange1: "Tihange 1, geopend in 1975. Ouder dan veel van uw huishoudtoestellen, maar de staat gelooft er nog in.",
+      tihange2: "Tihange 2 staat bekend om zijn 'waterstofvlokken' in de reactorwand. Geen zorgen, de experts zeggen dat het veilig is. Zij wonen in Brussel.",
+      tihange3: "Gefeliciteerd! Tihange 3 is al van u. De deal was al gesloten voor u dit kon lezen.",
+      alle: "Proficiat! U bezit nu 7 kerncentrales. En de helft ervan is technisch verouderd. Welkom in het exclusieve clubje van Belgische kernenergie-eigenaren."
+    },
+    fr: {
+      doel1: "Doel 1 était censée fermer, mais avec suffisamment d'argent public, tout peut rouvrir.",
+      doel2: "Doel 2 : le jumeau de Doel 1. Achetez-en une, n'en obtenez pas une deuxième gratuitement.",
+      doel3: "Doel 3 avait des fissures dans la paroi du réacteur. Mais les fissures ne sont un problème que si vous n'y injectez pas assez d'argent.",
+      doel4: "Félicitations ! Doel 4 vous appartient déjà — ou plutôt au contribuable. Le gouvernement l'a acheté en votre nom.",
+      tihange1: "Tihange 1, ouverte en 1975. Plus vieille que vos électroménagers, mais l'État y croit encore.",
+      tihange2: "Tihange 2 est connue pour ses 'flocons d'hydrogène' dans la paroi du réacteur. Ne vous inquiétez pas, les experts disent que c'est sûr. Ils habitent à Bruxelles.",
+      tihange3: "Félicitations ! Tihange 3 vous appartient déjà. Le deal était conclu avant que vous puissiez lire ceci.",
+      alle: "Félicitations ! Vous possédez maintenant 7 centrales nucléaires. Et la moitié est technologiquement obsolète. Bienvenue dans le club exclusif des propriétaires de nucléaire belge."
+    }
+  };
+
+  const belastingbetalers = 5500000;
+
+  function berekenen() {
+    const centrale = document.getElementById('sel-centrale');
+    const deal = document.getElementById('sel-deal');
+    const kinderen = parseInt(document.getElementById('sel-kinderen').value);
+
+    if (!centrale.value) {
+      alert(lang === 'nl' ? 'Gelieve een kerncentrale te selecteren.' : 'Veuillez sélectionner une centrale nucléaire.');
+      return;
+    }
+
+    const selected = centrale.options[centrale.selectedIndex];
+    const baseCost = parseInt(selected.getAttribute('data-cost'));
+    const dealMultiplier = parseFloat(deal.value);
+    const totalCost = baseCost * dealMultiplier;
+    const perPersoon = totalCost / belastingbetalers;
+    const perGezin = perPersoon * (1 + kinderen * 0.4);
+
+    const box = document.getElementById('result-box');
+    box.classList.remove('show');
+    void box.offsetWidth;
+    box.classList.add('show');
+
+    document.getElementById('result-header').textContent = lang === 'nl' ? 'Uw persoonlijke kernfactuur' : 'Votre facture nucléaire personnelle';
+    document.getElementById('result-centrale').textContent = selected.getAttribute('data-' + lang) || selected.text;
+    document.getElementById('result-price-label').textContent = lang === 'nl' ? 'Uw aandeel als belastingbetaler' : 'Votre part en tant que contribuable';
+    document.getElementById('result-price').textContent = '€\u202f' + Math.round(perGezin).toLocaleString('nl-BE');
+
+    const totalLabel = lang === 'nl' ? 'Totale kostprijs' : 'Coût total';
+    const ppLabel = lang === 'nl' ? 'Per belastingbetaler' : 'Par contribuable';
+    const dealLabel = lang === 'nl' ? 'Deal type' : 'Type de deal';
+    const dealName = deal.options[deal.selectedIndex].getAttribute('data-' + lang) || deal.options[deal.selectedIndex].text;
+
+    document.getElementById('result-breakdown').innerHTML = `
+      <div class="breakdown-item">
+        <div class="breakdown-label">${totalLabel}</div>
+        <div class="breakdown-value">€\u202f${Math.round(totalCost / 1e9 * 10) / 10} mrd</div>
+      </div>
+      <div class="breakdown-item">
+        <div class="breakdown-label">${ppLabel}</div>
+        <div class="breakdown-value">€\u202f${Math.round(perPersoon).toLocaleString('nl-BE')}</div>
+      </div>
+    `;
+
+    document.getElementById('result-comment').textContent = comments[lang][centrale.value] || '';
+
+    const disclaimer = lang === 'nl'
+      ? '* Berekend op basis van ~5,5 miljoen Belgische belastingbetalers. Cijfers zijn ruwe schattingen op basis van publiek beschikbare informatie. Satirische website — geen financieel advies.'
+      : '* Calculé sur la base de ~5,5 millions de contribuables belges. Chiffres basés sur des informations publiques disponibles. Site satirique — pas un conseil financier.';
+    document.getElementById('result-disclaimer').textContent = disclaimer;
+
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function setLang(l) {
+    lang = l;
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.lang-btn')[l === 'nl' ? 0 : 1].classList.add('active');
+    document.documentElement.lang = l;
+
+    document.querySelectorAll('[data-nl]').forEach(el => {
+      const val = el.getAttribute('data-' + l);
+      if (!val) return;
+      if (el.tagName === 'OPTION') {
+        el.textContent = val;
+      } else if (el.tagName === 'H1' || val.includes('<')) {
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
+    });
+
+    // Re-translate select options
+    document.querySelectorAll('select option').forEach(opt => {
+      const val = opt.getAttribute('data-' + l);
+      if (val) opt.textContent = val;
+    });
+  }
+</script>
+</body>
+</html>
